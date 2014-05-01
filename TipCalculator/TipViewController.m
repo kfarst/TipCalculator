@@ -15,7 +15,8 @@
 - (IBAction)onTap:(id)sender;
 - (void) updateValues;
 
-@property (weak, nonatomic) NSMutableArray *tipValues;
+@property (strong, nonatomic) NSMutableArray *tipValues;
+@property (strong, nonatomic) NSArray *tipSegments;
 
 @end
 
@@ -29,6 +30,8 @@
         UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
         backButton.title = @"Back";
         self.navigationItem.backBarButtonItem = backButton;
+        
+        self.tipSegments = @[@"smallestTipPercentage", @"middleTipPercentage", @"largestTipPercentage"];
     }
     return self;
 }
@@ -38,10 +41,9 @@
     [super viewWillAppear:animated];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
     
-    NSArray *tipSegments = @[@"smallestTipPercentage", @"middleTipPercentage", @"largestTipPercentage"];
-    
-    [tipSegments enumerateObjectsUsingBlock:^(id segment, NSUInteger idx, BOOL *stop) {
+    [self.tipSegments enumerateObjectsUsingBlock:^(id segment, NSUInteger idx, BOOL *stop) {
         int percentage = [defaults integerForKey:segment];
         
         if (percentage) {
@@ -85,6 +87,7 @@
 - (void)onSettingsButton {
     SettingsViewController *settingsController = [[SettingsViewController alloc] init];
     settingsController.defaultTipValues = self.defaultTipValues;
+    settingsController.tipSegments = self.tipSegments;
     [self.navigationController pushViewController:settingsController animated:YES];
 }
 @end

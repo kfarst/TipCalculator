@@ -12,8 +12,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *smallestTipPercentage;
 @property (weak, nonatomic) IBOutlet UITextField *middleTipPercentage;
 @property (weak, nonatomic) IBOutlet UITextField *largestTipPercentage;
-@property (strong, nonatomic) NSArray *tipSegments;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *onTap;
+@property (strong, nonatomic) UITextField *selectedField;
+- (IBAction)onTap:(id)sender;
+- (IBAction)onSelect:(UITextField *)sender;
+- (void)savePercentage;
 @end
 
 @implementation SettingsViewController
@@ -23,7 +25,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"Settings";
-        self.tipSegments = @[@"smallestTipPercentage", @"middleTipPercentage", @"largestTipPercentage"];
     }
     return self;
 }
@@ -50,7 +51,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.smallestTipPercentage.delegate = self;
+    self.middleTipPercentage.delegate = self;
+    self.largestTipPercentage.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,11 +65,33 @@
 
 - (IBAction)onTap:(id)sender {
     [self.view endEditing:YES];
+
     [self savePercentage];
 }
 
+- (IBAction)onSelect:(UITextField *)sender {
+    self.selectedField = sender;
+}
+
 - (void)savePercentage {
-    // save the new value
+    float enteredPercentage = [self.selectedField.text floatValue] * 0.01;
+    
+    if (enteredPercentage != [self.defaultTipValues[self.selectedField.tag] floatValue] && enteredPercentage != 0.0) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setFloat:enteredPercentage forKey:self.tipSegments[self.selectedField.tag]];
+        [defaults synchronize];
+        
+    } else {
+        self.selectedField.text = [NSString stringWithFormat:@"%d", (int)([self.defaultTipValues[self.selectedField.tag] floatValue] * 100)];
+    }
+
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField.text.length >= 2 && range.length == 0)
+        return NO;
+    return YES;
 }
 
 @end

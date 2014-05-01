@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) NSArray *defaultTipValues;
+@property (strong, nonatomic) NSArray *tipSegments;
 
 @end
