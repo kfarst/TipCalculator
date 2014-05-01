@@ -23,6 +23,10 @@
 		2511974C191099810072AC68 /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25119749191099810072AC68 /* TipViewController.m */; };
 		2511974D191099810072AC68 /* TipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2511974A191099810072AC68 /* TipViewController.xib */; };
 		2511974E191099810072AC68 /* TipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2511974A191099810072AC68 /* TipViewController.xib */; };
+		253D72001911F8AD0088A42C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 253D71FE1911F8AD0088A42C /* SettingsViewController.m */; };
+		253D72011911F8AD0088A42C /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 253D71FE1911F8AD0088A42C /* SettingsViewController.m */; };
+		253D72021911F8AD0088A42C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 253D71FF1911F8AD0088A42C /* SettingsViewController.xib */; };
+		253D72031911F8AD0088A42C /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 253D71FF1911F8AD0088A42C /* SettingsViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,9 @@
 		25119748191099810072AC68 /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
 		25119749191099810072AC68 /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
 		2511974A191099810072AC68 /* TipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipViewController.xib; sourceTree = "<group>"; };
+		253D71FD1911F8AD0088A42C /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		253D71FE1911F8AD0088A42C /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		253D71FF1911F8AD0088A42C /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +128,9 @@
 				25119748191099810072AC68 /* TipViewController.h */,
 				25119749191099810072AC68 /* TipViewController.m */,
 				2511974A191099810072AC68 /* TipViewController.xib */,
+				253D71FD1911F8AD0088A42C /* SettingsViewController.h */,
+				253D71FE1911F8AD0088A42C /* SettingsViewController.m */,
+				253D71FF1911F8AD0088A42C /* SettingsViewController.xib */,
 			);
 			path = TipCalculator;
 			sourceTree = "<group>";
@@ -232,6 +242,7 @@
 				2511974D191099810072AC68 /* TipViewController.xib in Resources */,
 				2511971F191096820072AC68 /* InfoPlist.strings in Resources */,
 				25119727191096820072AC68 /* Images.xcassets in Resources */,
+				253D72021911F8AD0088A42C /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2511974E191099810072AC68 /* TipViewController.xib in Resources */,
+				253D72031911F8AD0088A42C /* SettingsViewController.xib in Resources */,
 				25119738191096820072AC68 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +266,7 @@
 				25119725191096820072AC68 /* AppDelegate.m in Sources */,
 				2511974B191099810072AC68 /* TipViewController.m in Sources */,
 				25119721191096820072AC68 /* main.m in Sources */,
+				253D72001911F8AD0088A42C /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				253D72011911F8AD0088A42C /* SettingsViewController.m in Sources */,
 				2511974C191099810072AC68 /* TipViewController.m in Sources */,
 				2511973A191096820072AC68 /* TipCalculatorTests.m in Sources */,
 			);

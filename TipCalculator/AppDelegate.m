@@ -18,6 +18,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     TipViewController *tipController = [[TipViewController alloc] init];
+    tipController.defaultTipValues = @[@(0.1),@(0.15),@(0.20)];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tipController];
     
     self.window.rootViewController = navController;

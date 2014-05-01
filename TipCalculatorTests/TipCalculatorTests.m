@@ -7,8 +7,12 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <objc/runtime.h>
+#import "TipViewController.h"
 
 @interface TipCalculatorTests : XCTestCase
+
+@property (strong, nonatomic) TipViewController *tipVC;
 
 @end
 
@@ -17,7 +21,7 @@
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.tipVC = [[TipViewController alloc] init];
 }
 
 - (void)tearDown
@@ -26,9 +30,19 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void) testInitValues
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    [self.tipVC loadView];
+    
+    XCTAssert([self.tipVC.billAmount.text isEqualToString:@""], @"Bill amount is not empty");
+    XCTAssert([self.tipVC.tipLabel.text isEqualToString:@"$0.00"], @"Tip label is not correct");
+    XCTAssert([self.tipVC.totalLabel.text isEqualToString:@"$0.00"], @"Total label is not correct");
+    XCTAssertEqual(self.tipVC.tipControl.selectedSegmentIndex, 0, @"Tip control does not have the first button selected");
+}
+
+- (void)testTitleIsSet
+{
+    XCTAssertEqual(@"Tip Calculator", self.tipVC.title, @"TipController has an incorrect title");
 }
 
 @end
