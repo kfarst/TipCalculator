@@ -57,15 +57,15 @@
         }
         int labelForSegment = (int)([self.tipValues[idx] floatValue] * 100);
         [self.tipControl setTitle:[NSString stringWithFormat:@"%d%%", labelForSegment] forSegmentAtIndex:idx];
-
     }];
+    
+    [self updateValues];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self updateValues];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
 }
 
