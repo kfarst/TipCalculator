@@ -82,6 +82,7 @@
         [defaults synchronize];
         
     } else {
+        
         self.selectedField.text = [NSString stringWithFormat:@"%d", (int)([self.defaultTipValues[self.selectedField.tag] floatValue] * 100)];
     }
 

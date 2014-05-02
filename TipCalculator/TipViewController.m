@@ -41,16 +41,18 @@
     [super viewWillAppear:animated];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.tipValues = [[NSMutableArray alloc] init];
 
-    
     [self.tipSegments enumerateObjectsUsingBlock:^(id segment, NSUInteger idx, BOOL *stop) {
-        int percentage = [defaults integerForKey:segment];
+        float percentage = (float)[defaults floatForKey:segment];
         
         if (percentage) {
-            [self.tipValues addObject:[NSNumber numberWithUnsignedInteger:percentage]];
+            [self.tipValues addObject:@(percentage)];
         } else {
             [self.tipValues addObject:self.defaultTipValues[idx]];
         }
+        int labelForSegment = (int)([self.tipValues[idx] floatValue] * 100);
+        [self.tipControl setTitle:[NSString stringWithFormat:@"%d%%", labelForSegment] forSegmentAtIndex:idx];
 
     }];
 }
@@ -76,9 +78,17 @@
 
 - (void)updateValues {
     float billAmount = [self.billAmount.text floatValue];
+    float tipAmount;
+    float totalAmount;
+    
+    if (self.tipValues.count) {
+        tipAmount = billAmount * [self.tipValues[self.tipControl.selectedSegmentIndex] floatValue];
+        totalAmount = billAmount + tipAmount;
+    } else {
+        tipAmount = 0.0;
+        totalAmount = 0.0;
+    }
 
-    float tipAmount = billAmount * [self.tipValues[self.tipControl.selectedSegmentIndex] floatValue];
-    float totalAmount = billAmount + tipAmount;
     
     self.tipLabel.text = [NSString stringWithFormat:@"$%0.2f", tipAmount];
     self.totalLabel.text = [NSString stringWithFormat:@"$%0.2f", totalAmount];
