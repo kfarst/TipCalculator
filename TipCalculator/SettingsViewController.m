@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *middleTipPercentage;
 @property (weak, nonatomic) IBOutlet UITextField *largestTipPercentage;
 @property (strong, nonatomic) UITextField *selectedField;
+@property (strong, nonatomic) NSString *previousTextValue;
+
 - (IBAction)onTap:(id)sender;
 - (IBAction)onSelect:(UITextField *)sender;
 - (void)savePercentage;
@@ -71,6 +73,7 @@
 
 - (IBAction)onSelect:(UITextField *)sender {
     self.selectedField = sender;
+    self.previousTextValue = sender.text;
 }
 
 - (void)savePercentage {
@@ -80,10 +83,8 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setFloat:enteredPercentage forKey:self.tipSegments[self.selectedField.tag]];
         [defaults synchronize];
-        
     } else {
-        
-        self.selectedField.text = [NSString stringWithFormat:@"%d", (int)([self.defaultTipValues[self.selectedField.tag] floatValue] * 100)];
+        self.selectedField.text = [NSString stringWithFormat:@"%@", self.previousTextValue];
     }
 
 }
