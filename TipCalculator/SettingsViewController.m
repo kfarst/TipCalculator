@@ -79,7 +79,7 @@
 - (void)savePercentage {
     float enteredPercentage = [self.selectedField.text floatValue] * 0.01;
     
-    if (enteredPercentage != [self.defaultTipValues[self.selectedField.tag] floatValue] && enteredPercentage != 0.0) {
+    if (enteredPercentage != 0.0) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setFloat:enteredPercentage forKey:self.tipSegments[self.selectedField.tag]];
         [defaults synchronize];
