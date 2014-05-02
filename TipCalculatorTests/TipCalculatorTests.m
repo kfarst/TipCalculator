@@ -9,10 +9,9 @@
 #import <XCTest/XCTest.h>
 #import <objc/runtime.h>
 #import "TipViewController.h"
+#import "SettingsViewController.h"
 
 @interface TipCalculatorTests : XCTestCase
-
-@property (strong, nonatomic) TipViewController *tipVC;
 
 @end
 
@@ -21,7 +20,6 @@
 - (void)setUp
 {
     [super setUp];
-    self.tipVC = [[TipViewController alloc] init];
 }
 
 - (void)tearDown
@@ -30,9 +28,16 @@
     [super tearDown];
 }
 
-- (void)testTitleIsSet
+- (void)testTipCalculatorTitleIsSet
 {
-    XCTAssertEqual(@"Tip Calculator", self.tipVC.title, @"TipController has an incorrect title");
+    TipViewController *tipVC = [[TipViewController alloc] init];
+    XCTAssertEqual(@"Tip Calculator", tipVC.title, @"TipController has an incorrect title");
+}
+
+- (void)testSettingsIsSet
+{
+    SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
+    XCTAssertEqual(@"Settings", settingsVC.title, @"SettingsController has an incorrect title");
 }
 
 @end
